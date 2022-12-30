@@ -48,11 +48,11 @@ class _HomePageState extends State<HomePage> {
               } else if (state is ApiSearchResultState) {
                 return _listViewCard(context, state.data);
               } else if (state is ApiFailureState) {
-                return _listviewloading();
+                return _listViewLoading();
               } else if (state is ApiInitialState) {
-                return _listviewloading();
+                return _listViewLoading();
               } else {
-                return _listviewloading();
+                return _listViewLoading();
               }
             }),
           ),
@@ -84,5 +84,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _listviewloading() => const Center(child: CircularProgressIndicator());
+  Widget _listViewLoading() => const Center(child: CircularProgressIndicator());
 }
