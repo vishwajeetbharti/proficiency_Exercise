@@ -20,3 +20,8 @@ class ApiSearchResultState extends HomeViewState {
   List<Rows> data;
   ApiSearchResultState({required this.data});
 }
+
+class ApiSearchResultError extends HomeViewState {
+  String error;
+  ApiSearchResultError({required this.error});
+}

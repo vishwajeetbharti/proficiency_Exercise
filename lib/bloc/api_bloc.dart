@@ -28,7 +28,11 @@ class ApiCalling extends Bloc<ApiEvent, HomeViewState> {
                   .contains(event.keyvalue.toLowerCase()) ==
               true)
           .toList();
-      emit(ApiSearchResultState(data: res));
+      if (res.isEmpty) {
+        emit(ApiSearchResultError(error: "Animal is not present in Data"));
+      } else {
+        emit(ApiSearchResultState(data: res));
+      }
     });
   }
 }

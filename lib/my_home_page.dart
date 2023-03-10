@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               decoration: const InputDecoration(
-                  border: OutlineInputBorder(), hintText: "Search title"),
+                  border: OutlineInputBorder(), hintText: " title"),
               onChanged: (text) {
                 _apiCalling.add(Searching(keyvalue: text));
               },
@@ -47,6 +47,8 @@ class _HomePageState extends State<HomePage> {
                 return _listViewCard(context, state.data);
               } else if (state is ApiSearchResultState) {
                 return _listViewCard(context, state.data);
+              } else if (state is ApiSearchResultError) {
+                return _errorMassageShowing(context, state.error);
               } else if (state is ApiFailureState) {
                 return _listViewLoading();
               } else if (state is ApiInitialState) {
@@ -57,6 +59,15 @@ class _HomePageState extends State<HomePage> {
             }),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _errorMassageShowing(BuildContext context, String errorMassage) {
+    return Center(
+      child: Text(
+        errorMassage,
+        style: const TextStyle(fontSize: 25),
       ),
     );
   }
