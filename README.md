@@ -14,8 +14,8 @@
 
  here some screens of bloc example:-
 
- 
- ![Bloc_Screen](https://github.com/vishwajeetbharti/proficiency_Exercise/assets/71969138/ab80b6ef-04e9-4648-a302-03dc689545b8)
+![Bloc_Screen-01](https://github.com/vishwajeetbharti/proficiency_Exercise/assets/71969138/f019b749-f29b-4b31-baeb-bfd651505065)
+
 
  ![Bloc_Screen-01](https://github.com/vishwajeetbharti/proficiency_Exercise/assets/71969138/576f9d5b-b1c8-408b-82c6-0f8a72ee88e9)
 
