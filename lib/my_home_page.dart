@@ -25,15 +25,18 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Project"),
+        title: const Center(child: Text("Bloc Project")),
       ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(), hintText: " title"),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  hintText: "Title",
+                  hintStyle: const TextStyle(fontSize: 20)),
               onChanged: (text) {
                 _apiCalling.add(Searching(keyvalue: text));
               },
@@ -77,20 +80,38 @@ class _HomePageState extends State<HomePage> {
       child: ListView.builder(
           itemCount: data.length,
           itemBuilder: (context, index) {
-            return Column(
-              children: [
-                Text(
-                  data[index].title!,
-                  style: const TextStyle(fontSize: 30),
+            print(data[index].imageHref);
+            print(data[index].title);
+            if (data[index].imageHref != null) {
+              return Container(
+                padding: const EdgeInsets.all(8),
+                margin: const EdgeInsets.only(bottom: 8),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.yellow.shade100,
+                    border: Border.all(color: Colors.black)),
+                child: Column(
+                  children: [
+                    Text(
+                      data[index].title!,
+                      style: const TextStyle(fontSize: 30),
+                    ),
+                    Image.network(
+                      data[index].imageHref!,
+                      errorBuilder: (context, exception, stackTrace) {
+                        return const SizedBox();
+                      },
+                    ),
+                    Text(
+                      data[index].description!,
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                  ],
                 ),
-                if (data[index].imageHref != null)
-                  Image.network(data[index].imageHref!),
-                Text(
-                  data[index].description!,
-                  style: const TextStyle(fontSize: 20),
-                ),
-              ],
-            );
+              );
+            } else {
+              return const SizedBox();
+            }
           }),
     );
   }
